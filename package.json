@@ -1,0 +1,29 @@
+{
+  "name": "rent-advisor-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/6l3m/rent-advisor-api.git"
+  },
+  "author": "clement poulain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/6l3m/rent-advisor-api/issues"
+  },
+  "homepage": "https://github.com/6l3m/rent-advisor-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "eslint": "^6.4.0",
+    "nodemon": "^1.19.2"
+  }
+}
