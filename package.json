@@ -4,7 +4,10 @@
   "description": "",
   "main": "./src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon --watch src --exec \"npm run start\"",
+    "start": "npm run build && node ./dist/app.js",
+    "build": "babel src -d dist"
   },
   "repository": {
     "type": "git",
@@ -17,12 +20,21 @@
   },
   "homepage": "https://github.com/6l3m/rent-advisor-api#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "@babel/runtime": "^7.6.2",
+    "axios": "^0.19.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-http-proxy": "^1.6.0",
+    "mongoose": "^5.7.1",
+    "morgan": "^1.9.1",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.6.2",
     "@babel/core": "^7.6.2",
+    "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "eslint": "^6.4.0",
     "nodemon": "^1.19.2"
   }
