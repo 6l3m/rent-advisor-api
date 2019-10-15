@@ -13,9 +13,10 @@ export default (router) => {
       try {
         const url = `https://www.seloger.com/list.htm?tri=initial&enterprise=0&idtypebien=2,1`
           + `&pxMax=${adsDTO.budget}&idtt=1&naturebien=1&ci=${adsDTO.inseeCode}`;
+        console.log(url);
         const resp = await Axios.get(url);
         res.json({ status: 'OK', resp: JSON.stringify(resp.data)
-          .match('var ava_data =(.*)ava_data.logged')[1]
+          .match('window.initialData =(.*)window.tags')[1]
           .replace(/\\r?\\n|\\r|\\|;/g, '') 
         });
       } catch (error) {
