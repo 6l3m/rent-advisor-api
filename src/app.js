@@ -15,7 +15,7 @@ async function startServer() {
 
   await loaders(app);
 
-  if (process.env.NODE_ENV !== 'development') {
+  if (process.env.NODE_ENV !== 'development' && process.env.NODE_ENV !== 'geodis') {
     const privateKey = fs.readFileSync('/etc/letsencrypt/live/nd-api.duckdns.org/privkey.pem', 'utf8');
     const certificate = fs.readFileSync('/etc/letsencrypt/live/nd-api.duckdns.org/cert.pem', 'utf8');
     const ca = fs.readFileSync('/etc/letsencrypt/live/nd-api.duckdns.org/chain.pem', 'utf8');
