@@ -17,10 +17,9 @@ export default (router) => {
           + `&pxMax=${adsDTO.budget}&idtt=1&naturebien=1&ci=${adsDTO.inseeCode}`;
         Logger.info(url);
         const resp = await Axios.get(url, config.axios.request.config);
-        res.json({ status: 'OK', resp: JSON.stringify(resp.data)
-          .match('window.initialData =(.*)window.tags')[1]
-          .replace(/\\r?\\n|\\r|\\|;/g, '') 
-        });
+        const _resp = resp.data
+          .match('window.initialData =(.*);window.tags')[1];
+        res.json({ status: 'OK', data: JSON.parse(_resp) });
       } catch (error) {
         res.status(500).json({ status: 'KO', message: error.message });
         throw new Error(error.message);
