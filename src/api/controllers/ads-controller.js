@@ -20,10 +20,10 @@ export default (router) => {
     }
   );
 
-  router.post('/slapi/ad/photo', 
+  router.get('/slapi/ad/photo', 
     async (req, res) => {
       try {
-        res.redirect(req.body.url);
+        res.redirect(req.query.url);
       } catch (error) {
         res.status(500).json({ status: 'KO', message: error.message });
         throw new Error(error.message);
