@@ -1,6 +1,4 @@
-import Axios from "axios";
-import Logger from '../../loaders/logger';
-import config from '../../config';
+import AdsService from '../../services/ads-service';
 
 export default (router) => {
 
@@ -13,17 +11,24 @@ export default (router) => {
         budget: req.body.budget 
       };
       try {
-        const url = `https://www.seloger.com/list.htm?tri=initial&enterprise=0&idtypebien=2,1`
-          + `&pxMax=${adsDTO.budget}&idtt=1&naturebien=1&ci=${adsDTO.inseeCode}`;
-        Logger.info(url);
-        const resp = await Axios.get(url, config.axios.request.config);
-        const _resp = resp.data
-          .match('window.initialData =(.*);window.tags')[1];
-        res.json({ status: 'OK', data: JSON.parse(_resp) });
+        const resp = await AdsService.prototype.getAds(adsDTO);
+        res.json({ status: 'OK', data: JSON.parse(resp) });
       } catch (error) {
         res.status(500).json({ status: 'KO', message: error.message });
         throw new Error(error.message);
       }
     }
   );
+
+  router.post('/slapi/ad/photo', 
+    async (req, res) => {
+      try {
+        res.redirect(req.body.url);
+      } catch (error) {
+        res.status(500).json({ status: 'KO', message: error.message });
+        throw new Error(error.message);
+      }
+    }
+  );
+
 }
