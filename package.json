@@ -22,23 +22,23 @@
   },
   "homepage": "https://github.com/6l3m/rent-advisor-api#readme",
   "dependencies": {
-    "@babel/runtime": "^7.6.3",
-    "axios": "^0.19.0",
+    "@babel/runtime": "^7.8.4",
+    "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.0",
-    "mongoose": "^5.7.7",
+    "mongoose": "^5.9.1",
     "morgan": "^1.9.1",
     "tunnel": "0.0.6",
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.6.4",
-    "@babel/core": "^7.6.4",
-    "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.6.3",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
     "babel-plugin-transform-class-properties": "^6.24.1",
-    "eslint": "^6.6.0",
-    "nodemon": "^1.19.4"
+    "eslint": "^6.8.0",
+    "nodemon": "^2.0.2"
   }
 }

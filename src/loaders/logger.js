@@ -1,20 +1,17 @@
-import * as winston from 'winston';
 import config from '../config';
+import * as winston from 'winston';
+
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 const transports = [];
-if(process.env.NODE_ENV !== 'development') {
-  transports.push(
-    new winston.transports.Console()
-  )
+if (process.env.NODE_ENV !== 'development' && process.env.NODE_ENV !== 'geodis') {
+  transports.push(new winston.transports.Console());
 } else {
   transports.push(
     new winston.transports.Console({
-      format: winston.format.combine(
-        winston.format.cli(),
-        winston.format.splat(),
-      )
+      format: winston.format.combine(winston.format.cli(), winston.format.splat())
     })
-  )
+  );
 }
 
 const LoggerInstance = winston.createLogger({
