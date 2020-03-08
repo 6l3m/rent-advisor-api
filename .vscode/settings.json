@@ -5,6 +5,6 @@
     "git-commit": false,
     "plaintext": false,
     "json": true,
-    "javascriptreact": true
+    "javascript": true
   }
 }

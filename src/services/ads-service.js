@@ -1,7 +1,8 @@
 import Axios from 'axios';
 import config from '../config';
-import logger from '../loaders/logger';
 import unicodeToChar from '../utils/unicodeToChar';
+
+import logger from '../loaders/logger';
 
 export default class AdsService {
   async getAds(adsDTO) {
