@@ -5,7 +5,7 @@ import unicodeToChar from '../utils/unicodeToChar';
 
 describe('Get ads', () => {
   const adsDTO = {
-    inseeCode: 750119,
+    inseeCode: 750101,
     budget: 1500
   };
   const url =
@@ -41,7 +41,7 @@ describe('Get ads', () => {
   });
 
   it('get ads as json', () => {
-    const adsAsString = unicodeToChar(adsMatch[1]).replace('\\\\"', "'");
+    const adsAsString = unicodeToChar(adsMatch[1]).replace(/\\\\"/g, "'");
     const ads = JSON.parse(adsAsString);
     expect(ads).not.toBeNull();
   });

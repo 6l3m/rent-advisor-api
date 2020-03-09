@@ -18,7 +18,7 @@ export default class AdsService {
     if (dataMatch) {
       return dataMatch[1];
     } else if (unicodeDataMatch) {
-      return unicodeToChar(unicodeDataMatch[1]);
+      return unicodeToChar(unicodeDataMatch[1]).replace(/\\\\"/g, "'");
     }
   }
 }
