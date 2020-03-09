@@ -1,6 +1,7 @@
-import AdsService from '../services/ads-service';
 import Axios from 'axios';
 import config from '../config';
+import LoggerInstance from '../loaders/logger';
+import unicodeToChar from '../utils/unicodeToChar';
 
 describe('Get ads', () => {
   const adsDTO = {
@@ -10,19 +11,38 @@ describe('Get ads', () => {
   const url =
     `https://www.seloger.com/list.htm?tri=initial&enterprise=0&idtypebien=2,1` +
     `&pxMax=${adsDTO.budget}&idtt=1&naturebien=1&ci=${adsDTO.inseeCode}`;
+  LoggerInstance.info(url);
+  let cfg = config.axios.request.config;
+  Axios.interceptors.request.use(config => {
+    console.log(config);
+    return config;
+  });
+  // Axios.interceptors.response.use(response => {
+  //   delete cfg.headers.cookie;
+  //   response.headers['set-cookie'].forEach(cookie => {
+  //     cfg;
+  //   });
+  //   return response;
+  // });
 
-  it('get response as string', async () => {
-    const resp = await Axios.get(url, config.axios.request.config);
-    console.log(resp.data);
+  let resp;
+  let adsMatch;
+
+  it('get response', async () => {
+    resp = await Axios.get(url, cfg);
     expect(resp.data).toBeDefined();
   });
 
-  it('get ads from response', async () => {
-    const adsAsString = await AdsService.prototype.getAds(adsDTO);
-    // adsAsString.replace('\\\\"', '');
-    console.log(adsAsString.substring(39400, 39475));
-    const ads = JSON.parse(adsAsString.toLowerCase());
-    console.log(ads);
-    expect(ads).toBeDefined();
+  it('get ads match', () => {
+    adsMatch = resp.data.match(
+      'window\\["initialData"\\] = JSON.parse\\("(.*)"\\);window\\["tags"\\]'
+    );
+    expect(adsMatch).not.toBeNull();
+  });
+
+  it('get ads as json', () => {
+    const adsAsString = unicodeToChar(adsMatch[1]).replace('\\\\"', "'");
+    const ads = JSON.parse(adsAsString);
+    expect(ads).not.toBeNull();
   });
 });
