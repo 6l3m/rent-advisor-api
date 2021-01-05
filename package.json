@@ -23,7 +23,7 @@
   "homepage": "https://github.com/6l3m/rent-advisor-api#readme",
   "dependencies": {
     "@babel/runtime": "^7.8.7",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.0",
